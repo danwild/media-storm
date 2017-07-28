@@ -1,0 +1,30 @@
+{
+	"map": {
+		"basemaps": [
+			{
+				"name": "esri satellite",
+				"type": "TILE",
+				"url": "http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+				"options": {
+					"attribution": "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
+				}
+			},
+			{
+				"name": "canvas",
+				"type": "TILE",
+				"url": "http://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+				"options": {
+					"attribution": "Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ",
+					"maxZoom": 16
+				}
+			}
+		],
+		"attributionPrefix": "<a href='http://www.csiro.au/Legal-Notice-and-Disclaimer.aspx' target='_blank'>Legal & Disclaimer</a>, <a href='http://www.csiro.au/Privacy.aspx' target='_blank'>Privacy</a> ",
+		"overlays": [],
+		"startCenter": {
+			"lat": -26,
+			"lng": 135
+		},
+		"startZoom": 4
+	}
+}

@@ -1,0 +1,35 @@
+<template name="masterlayout">
+
+	<div class="h100">
+		{{> masterheader}}
+		{{> mastercontent template=contentTemplate}}
+		{{> masterfooter}}
+	</div>
+
+</template>
+
+<template name="masterheader">
+
+	<header>
+
+		<div class="large-4 medium-5 small-4 columns title" style="padding-left: 10px;">
+			<span class="show-for-medium">MediaSTORM</span>
+		</div>
+
+		{{>nav}}
+
+	</header>
+
+</template>
+
+<template name="mastercontent">
+	<main>
+		{{> Template.dynamic template=template}}
+		{{> sAlert}}
+	</main>
+</template>
+
+<template name="masterfooter">
+	<!--put core footer templates here-->
+	{{> sAlert}}
+</template>
