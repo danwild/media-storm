@@ -7,7 +7,9 @@ Template.toolPanel.events({
 
 	"click .toolPanel": function(e){
 
-		TwitterHelper.getRequestId();
+        Meteor.call('getTwitter', function(err, data) {
+
+		});
 	}
 
 });

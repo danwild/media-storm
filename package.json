@@ -33,6 +33,7 @@
     "leaflet-mouse-position": "^1.0.0",
     "meteor-node-stubs": "~0.2.0",
     "moment": "^2.18.1",
+    "oauth": "^0.9.15",
     "underscore": "^1.8.3"
   }
 }
