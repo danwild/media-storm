@@ -170,13 +170,13 @@ TimeSeriesChart = {
 			series: [
 				{
 					name: 'Major Earthquakes',
-					color: 'rgba(223, 83, 83, .5)',
+					color: 'rgba(223, 83, 83, .8)',
 					data: quakesBig
 				},
 
 				{
 					name: 'Earthquakes',
-					color: 'rgba(245, 127, 23, .5)',
+					color: 'rgba(245, 127, 23, .1)',
 					data: quakesSmall
 				}
 			]
