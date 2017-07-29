@@ -22,9 +22,10 @@
 		"attributionPrefix": "<a href='http://www.csiro.au/Legal-Notice-and-Disclaimer.aspx' target='_blank'>Legal & Disclaimer</a>, <a href='http://www.csiro.au/Privacy.aspx' target='_blank'>Privacy</a> ",
 		"overlays": [],
 		"startCenter": {
-			"lat": -26,
+			"lat": -35,
 			"lng": 135
 		},
 		"startZoom": 4
-	}
+	},
+	"magLimit": 4.5
 }

@@ -17,7 +17,7 @@ Meteor.startup(function(){
 		position: 'bottom-left',
 		timeout: 5000,
 		html: true,
-		offset: 50
+		offset: 320
 	});
 
 });
