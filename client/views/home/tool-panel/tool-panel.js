@@ -9,6 +9,10 @@ Template.toolPanel.events({
 
         Meteor.call('getTwitter', function(err, data) {
 
+        	obj = JSON.parse(data);
+
+
+        	console.log(obj);
 		});
 	}
 

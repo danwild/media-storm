@@ -14,6 +14,7 @@ Meteor.methods({
 	},
 
 	getTwitter: function () {
+
         return TwitterHelper.getTest();
     },
 
