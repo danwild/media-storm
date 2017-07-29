@@ -2,6 +2,19 @@ Meteor.methods({
 
 	/**
 	 *
+	 * CALL THIS LIKE THIS FROM CLIENT
+	 *
+	 * Meteor.call('getData', ID, function(err, data) { }
+	 *
+	 * @param id
+	 * @returns {*}
+	 */
+	getData: function(id){
+		return MyHelper.getData(id);
+	},
+
+	/**
+	 *
 	 * Client code should call this server method to avoid CORS restrictions
 	 */
 	crossDomainProxy: function(url, options, method) {
