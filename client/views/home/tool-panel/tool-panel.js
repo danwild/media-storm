@@ -1,11 +1,13 @@
+
+
+
 Session.set("foo", 1);
 
 Template.toolPanel.events({
 
 	"click .toolPanel": function(e){
-		console.log(e);
 
-		Session.set("foo", "baaaaaaar");
+		TwitterHelper.getRequestId();
 	}
 
 });
@@ -15,10 +17,8 @@ Template.toolPanel.helpers({
 
 	example: function(){
 
-		//return Helpers.quakes[Session.get("foo")].Magnitude;
-		return 'testing branch'
 
-		//return Session.get("foo");
+
 	}
 
 });
