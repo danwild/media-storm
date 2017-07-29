@@ -1,5 +1,6 @@
 Meteor.methods({
 
+	getNews: NewsFeedHelper.getNews,
 	/**
 	 *
 	 * Client code should call this server method to avoid CORS restrictions

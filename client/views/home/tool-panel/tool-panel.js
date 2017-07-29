@@ -3,7 +3,7 @@ Session.set("foo", 1);
 Template.toolPanel.events({
 
 	"click .toolPanel": function(e){
-		console.log(e);
+
 
 		Session.set("foo", "baaaaaaar");
 	}
