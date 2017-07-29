@@ -17,6 +17,9 @@ import '/node_modules/leaflet-loading/src/Control.Loading.css';
 require('/node_modules/leaflet-mouse-position/src/L.Control.MousePosition.js');
 import '/node_modules/leaflet-mouse-position/src/L.Control.MousePosition.css';
 
+// CHARTS
+import Highcharts from 'highcharts';
+
 // MISC / UTIL
 import '/node_modules/foundation-sites/dist/foundation.js';
 import moment from 'moment';
