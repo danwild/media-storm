@@ -5,3 +5,7 @@ UI.registerHelper('currentTime', function() {
 UI.registerHelper('isRoute', function(route) {
 	return route == FlowRouter.getRouteName();
 });
+
+UI.registerHelper('targetQuakeId', function() {
+	return Session.get("targetQuakeId");
+});

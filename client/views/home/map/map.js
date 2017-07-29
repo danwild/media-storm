@@ -29,6 +29,8 @@ Template.map.onRendered(function () {
 
 	MapHelper.setupLoading();
 
+	EarthquakeMapLayer.initBigEarthQuakesLayer();
+	EarthquakeMapLayer.initSmallEarthQuakesLayer();
 });
 
 MapHelper = {

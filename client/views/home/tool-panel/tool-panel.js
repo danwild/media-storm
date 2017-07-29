@@ -1,6 +1,5 @@
 
 
-
 Session.set("foo", 1);
 
 Template.toolPanel.events({
@@ -28,3 +27,4 @@ Template.toolPanel.helpers({
 	}
 
 });
+
