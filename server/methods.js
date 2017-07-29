@@ -13,6 +13,11 @@ Meteor.methods({
 		return MyHelper.getData(id);
 	},
 
+	getTwitter: function () {
+
+        return TwitterHelper.getData('supercat', '2017-07-30');
+    },
+
 	/**
 	 *
 	 * Client code should call this server method to avoid CORS restrictions
