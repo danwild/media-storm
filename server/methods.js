@@ -6,6 +6,18 @@ Meteor.methods({
 	 */
 	crossDomainProxy: function(url, options, method) {
 
+		/*
+		 // how to use this from client code
+		 Meteor.call('crossDomainProxy', url, null, "GET", function(err, response) {
+
+			 if(err || !responses) {
+				 console.log(err);
+			 }
+			 else {
+				// do something ith response
+			 });
+		*/
+
 		this.unblock();
 
 		var params = {
