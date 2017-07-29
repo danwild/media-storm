@@ -1,11 +1,60 @@
 /**
- * Created by dandaman on 29/7/17.
+ * Created by Dan n Brad on 29/7/17.
  */
 
 TwitterHelper = {
 
+    //I just have this here as a template....
+    getDataExample: function(id){
+
+        // return a promise while we do async stuff
+        return new Promise((resolve, reject) => {
+
+            // make an async call
+            HTTP.call("GET", "http://my-url.com", function(err, response){
+
+                // oh no error, we'll reject the query
+                if(err){
+                    console.log('error: '+err);
+                    reject(err);
+                }
+
+                // great we got data, lets resolve it
+                else {
+                    resolve(response);
+                }
+
+            });
+
+        });
+    },
+
     accessToken : "icNZWaoOvwjGIknimKODwwn4j",
     accessTokenSecret : "ItbA7XFZJO9mNTuRVWGOF1iMbUgw2HAWhQNClv1MLcaNYxGp3c",
+
+    getTest: function(){
+
+        // return a promise while we do async stuff
+        return new Promise((resolve, reject) => {
+
+            // make an async call
+            HTTP.call("GET", "http://my-url.com", function(err, response){
+
+                // oh no error, we'll reject the query
+                if(err){
+                    console.log('error: '+err);
+                    reject(err);
+                }
+
+                // great we got data, lets resolve it
+                else {
+                    resolve(response);
+                }
+
+            });
+
+        });
+    },
 
     oauth : new OAuth.OAuth(
         'https://api.twitter.com/oauth/request_token',
@@ -17,18 +66,19 @@ TwitterHelper = {
         'HMAC-SHA1'
     ),
 
-    getRequestId: function () {
+    getTestData: function () {
 
         //GET /search/tweets.json
         this.oauth.get(
-            'https://api.twitter.com/1.1/search/tweets.json?q=%40twitterapi',
+            'https://api.twitter.com/1.1/search/tweets.json?q=%40govhack',
             this.accessToken,
             this.accessTokenSecret,
             function (e, data, res) {
                 if (e) console.error(e);
                 console.log(data);
-            });
-
+        });
     },
+
+
 
 };
