@@ -1,6 +1,8 @@
 
 /**
- * Created by dandaman on 29/7/17.
+ * Created by Brad on 29/7/17.
+ *
+ *  Twitter application access key allows for approx 450 queries every 15 minutes
  */
 
 
@@ -46,12 +48,23 @@ TwitterHelper = {
     },
 
 
-    getData: function(text, date, longitude, latitude, radius){
+    getData: function(text, date=null, longitude=null, latitude=null, radius=null){
 
         console.log('Fetching tweats for ' + date + " within " + radius + " kilometres of " + longitude + " : " + latitude);
 
-        const params = "q=" + text + "&geocode="+ latitude+ "," + longitude + "," + radius + "km" + "&until=" + date;
+        //geocode params are now optional
+        var geoParams = "";
+        if(longitude != null && latitude != null && radius != null){
+            geoParams = "&geocode="+ latitude+ "," + longitude + "," + radius + "km";
+        }
 
+        //Date param is now optional
+        var dateParam ="";
+        if(date != null){
+            dateParam = "&until=" + date;
+        }
+
+        const params = "q=" + text + geoParams + dateParam;
 
         // return a promise while we do async stuff
         return new Promise((resolve, reject) => {
@@ -79,6 +92,12 @@ TwitterHelper = {
 
         });
     },
+
+
+    //google api key AIzaSyA6XAlZwn2SuFh3vNTHeW1WhJpal9FC29U
+    googleAPIkey : "AIzaSyA6XAlZwn2SuFh3vNTHeW1WhJpal9FC29U",
+    //just incase we might use it i got a key. :P
+
 };
 
 
