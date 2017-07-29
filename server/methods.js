@@ -15,7 +15,7 @@ Meteor.methods({
 
 	getTwitter: function () {
 
-        return TwitterHelper.getTest();
+        return TwitterHelper.getData('supercat', '2017-07-30');
     },
 
 	/**
