@@ -4,7 +4,6 @@ Meteor.methods({
 		return NewsFeedHelper.getNews();
 	},
 	/**
-	 *
 	 * Client code should call this server method to avoid CORS restrictions
 	 */
 	crossDomainProxy: function(url, options, method) {
