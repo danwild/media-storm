@@ -15,7 +15,8 @@ Template.toolPanel.helpers({
 
 	example: function(){
 
-		return Helpers.quakes[Session.get("foo")].Magnitude;
+		//return Helpers.quakes[Session.get("foo")].Magnitude;
+		return 'testing branch'
 
 		//return Session.get("foo");
 	}
