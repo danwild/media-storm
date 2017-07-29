@@ -53,7 +53,41 @@ TwitterHelper = {
         });
     },
 
+    getData: function(text, date, longitude, latitude, radius){
 
+        console.log('Fetching tweats for ' + date + " within " + radius + " kilometres of " + longitude + " : " + latitude);
+
+        var params = "q=" + text +
+            "&geocode="+ latitude+ "," + longitude + "," + radius + "km" +
+            "&until="+date;
+
+
+        // return a promise while we do async stuff
+        return new Promise((resolve, reject) => {
+
+            // make an async call
+            this.oauth.get(
+                'https://api.twitter.com/1.1/search/tweets.json?' + params,
+                this.accessToken,
+                this.accessTokenSecret,
+                function (e, data, res) {
+                    if (e){
+                        console.log(e);
+                        reject(e);
+                        return e;
+
+                    }
+                    else {
+
+                        console.log(data);
+                        resolve(data);
+                        return data;
+
+                    }
+                });
+
+        });
+    },
 };
 
 
