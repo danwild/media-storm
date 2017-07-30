@@ -15,7 +15,7 @@ Meteor.startup(function(){
 	sAlert.config({
 		effect: 'slide',
 		position: 'top',
-		timeout: 10000,
+		timeout: 100000000,
 		html: true,
 		offset: 320
 	});

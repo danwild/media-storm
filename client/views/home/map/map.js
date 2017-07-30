@@ -10,8 +10,13 @@ Template.map.onRendered(function () {
 	MapHelper.map = L.map('map', {
 		center: MapHelper.mapConfig.startCenter,
 		zoom: MapHelper.mapConfig.startZoom,
+		zoomControl: false,
 		layers: [] // see comment below
 	});
+
+	L.control.zoom({
+		position:'topright'
+	}).addTo(MapHelper.map);
 
 	// seeing strange conflict in leaflet when adding L.control.layers and layers array on
 	// map init, add separately and we have no problem..
