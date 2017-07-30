@@ -61,7 +61,7 @@ TimeSeriesChart = {
 					color: 'red', // Color value
 					dashStyle: 'solid', // Style of the plot line. Default to solid
 					value: 1401840000000, // Value of where the line will appear
-					width: 2 // Width of the line
+					width: 0 // Width of the line
 				}]
 
 
