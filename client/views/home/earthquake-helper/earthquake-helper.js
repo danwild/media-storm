@@ -9,6 +9,7 @@ EarthquakeHelper = {
 
 		// TODO
 		// do some vis on the map
+		EarthquakeMapLayers.animateQuake(id);
 
 		// query server for twitter data
 		// vis tweets on map, show some top tweets as notifications
