@@ -36,7 +36,7 @@ Meteor.methods({
         // };
 
 
-       // return TwitterHelper.getData('earth quake', quake['UTC Date'] );
+        return TwitterHelper.getData('govhack', '2017-07-30');
     },
 
     /**
