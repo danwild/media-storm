@@ -23,10 +23,10 @@ TimeSeriesChart = {
 
 	init: function(){
 
+		if(this.chart) return;
+
 		var quakesBig = Helpers.quakeBigTimeSeries();
 		var quakesSmall = Helpers.quakeSmallTimeSeries();
-
-		console.log(quakesBig);
 
 		TimeSeriesChart.chart = Highcharts.chart('timeSeriesChart', {
 			chart: {
