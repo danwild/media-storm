@@ -1,17 +1,11 @@
 
 /**
-<<<<<<< HEAD
- * Created by Brad on 29/7/17.
- *
- *  Twitter application access key allows for approx 450 queries every 15 minutes
-=======
  * @author Daniel Richardson and Brad Hayes
  * Created by dandaman on 29/7/17.
  *
  *
  * Backend API for searching tweets from Twitter based on certain conditions to find tweets from people within an earthquake
  * zone. These tweets will be displayed in the applications.
->>>>>>> 7552c945aa15958a5e29be9bd336f24c42e20a8a
  */
 
 
@@ -90,25 +84,6 @@ TwitterHelper = {
         return paramaters;
     },
 
-<<<<<<< HEAD
-    getData: function(text, date=null, longitude=null, latitude=null, radius=null){
-
-        console.log('Fetching tweats for ' + date + " within " + radius + " kilometres of " + longitude + " : " + latitude);
-
-        //geocode params are now optional
-        var geoParams = "";
-        if(longitude != null && latitude != null && radius != null){
-            geoParams = "&geocode="+ latitude+ "," + longitude + "," + radius + "km";
-        }
-
-        //Date param is now optional
-        var dateParam ="";
-        if(date != null){
-            dateParam = "&until=" + date;
-        }
-
-        const params = "q=" + text + geoParams + dateParam;
-=======
     /***
      * This method processes the arguments passed to it and generates and sends a query to Twitter to request results.
      * NOTE: this method is limited to 15 records per query and has an upper limit 450 queries per 15 minutes.
@@ -122,7 +97,6 @@ TwitterHelper = {
         //console.log('Fetching tweets for ' + date + " within " + radius + " kilometres of " + longitude + " : " + latitude);
 
         const params = this.getParamaters(text, date, geolocation);
->>>>>>> 7552c945aa15958a5e29be9bd336f24c42e20a8a
 
         // return a promise while we do async stuff
         return new Promise((resolve, reject) => {
@@ -144,11 +118,6 @@ TwitterHelper = {
                 });
         });
     },
-
-
-    //google api key AIzaSyA6XAlZwn2SuFh3vNTHeW1WhJpal9FC29U
-    googleAPIkey : "AIzaSyA6XAlZwn2SuFh3vNTHeW1WhJpal9FC29U",
-    //just incase we might use it i got a key. :P
 
 };
 
