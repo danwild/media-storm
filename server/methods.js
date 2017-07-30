@@ -22,15 +22,16 @@ Meteor.methods({
      */
     getTwitter: function (id) {
 
-        var quake = Helpers.getQuake(id);
+        const quake = Helpers.getQuake(id);
         if(!quake) return;
-        
-        console.log(quake);
 
-        console.log(quake['UTC Date']);
+        var today = new Date();
+        var dd = today.getDate() - 7;
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();
+        today = yyyy + '-' + mm + '-' + dd;
 
-        return TwitterHelper.getData(quake['UTC Date']);
-        //return TwitterHelper.getTest();
+        return TwitterHelper.getData(today);
     },
 
     /**

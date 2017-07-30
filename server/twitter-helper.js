@@ -72,7 +72,7 @@ TwitterHelper = {
     getParamaters: function (date, geolocation) {
 
 
-        let parameters = 'q=catsORdogs';
+        let parameters = 'q=govhack OR earthquakes OR weather';
 
         if (typeof geolocation !== "undefined") {
             parameters =  parameters + '&geocode=' + geolocation.latitude + "," + geolocation.longitude + "," + geolocation.radius + "km";

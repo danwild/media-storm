@@ -73,7 +73,9 @@ EarthquakeHelper = {
         // vis tweets on map, show some top tweets as notifications
         Meteor.call('getTwitter', id, function(err, data) {
 
-	        if(err || data.length < 1) return;
+        	console.log(data);
+
+	        // if(err || !data.statuses) return;
 
         	const tweets = JSON.parse(data);
             quakeID = id;
