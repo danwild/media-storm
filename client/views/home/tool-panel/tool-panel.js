@@ -11,7 +11,7 @@ Template.toolPanel.events({
         	obj = JSON.parse(data);
 
 
-        	console.log(obj);
+        	//console.log(obj);
 		});
 	}
 

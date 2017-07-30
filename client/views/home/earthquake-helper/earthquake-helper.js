@@ -2,20 +2,18 @@ Session.set("targetQuakeId", null);
 
 EarthquakeHelper = {
 
-	setTarget: function(id){
+	setTarget: function(id) {
 
 		Helpers.success({ message: "targetQuakeId updated: " + id });
-
-
-
 		Session.set("targetQuakeId", id);
 
 		// TODO
 		// do some vis on the map
+		EarthquakeMapLayers.animateQuake(id);
 
 		// query server for twitter data
 		// vis tweets on map, show some top tweets as notifications
-        Meteor.call('getTwitter', function(err, data) {
+        Meteor.call('getTwitter', id, function(err, data) {
             const tweets = JSON.parse(data);
 
 

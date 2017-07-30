@@ -1,56 +1,71 @@
 Meteor.methods({
 
-	/**
-	 *
-	 * CALL THIS LIKE THIS FROM CLIENT
-	 *
-	 * Meteor.call('getData', ID, function(err, data) { }
-	 *
-	 * @param id
-	 * @returns {*}
-	 */
-	getData: function(id){
-		return MyHelper.getData(id);
-	},
-
-	getTwitter: function () {
-
-        return TwitterHelper.getTest();
+    /**
+     *
+     * CALL THIS LIKE THIS FROM CLIENT
+     *
+     * Meteor.call('getData', ID, function(err, data) { }
+     *
+     * @param id
+     * @returns {*}
+     */
+    getData: function(id){
+        //console.log(id);
+        return MyHelper.getData(id);
     },
 
-	/**
-	 *
-	 * Client code should call this server method to avoid CORS restrictions
-	 */
-	crossDomainProxy: function(url, options, method) {
+    /***
+     * Interface between client and server TwitterHelper for searching and returning tweets.
+     *
+     * @param id, the earth quake's id to get the date and geolocation data to search twitter.
+     * @returns {*}
+     */
+    getTwitter: function (id) {
 
-		/*
-		 // how to use this from client code
-		 Meteor.call('crossDomainProxy', url, null, "GET", function(err, response) {
+        console.log("this is an id debug: " + id);
 
-			 if(err || !responses) {
-				 console.log(err);
-			 }
-			 else {
-				// do something ith response
-			 });
-		*/
+        const geolocation = {
+            latitude: '',
+            longitude: '',
+            radius: ''
+        };
 
-		this.unblock();
+        return TwitterHelper.getData('govhack', '2017-07-30');
+    },
 
-		var params = {
-			headers: {
-				Accept: "text/javascript, application/xml, text/xml, text/html, */*"
-			}
-		};
+    /**
+     *
+     * Client code should call this server method to avoid CORS restrictions
+     */
+    crossDomainProxy: function(url, options, method) {
 
-		if(options) _.extend(params, options);
+        /*
+         // how to use this from client code
+         Meteor.call('crossDomainProxy', url, null, "GET", function(err, response) {
 
-		try {
-			return HTTP.call(method, url, params);
-		}
-		catch (e) {
-			throw new Meteor.Error(500, 'Error 500: Get request failed', e);
-		}
-	}
+         if(err || !responses) {
+         console.log(err);
+         }
+         else {
+         // do something ith response
+         });
+         */
+
+        this.unblock();
+
+        var params = {
+            headers: {
+                Accept: "text/javascript, application/xml, text/xml, text/html, */*"
+            }
+        };
+
+        if(options) _.extend(params, options);
+
+        try {
+            return HTTP.call(method, url, params);
+        }
+        catch (e) {
+            throw new Meteor.Error(500, 'Error 500: Get request failed', e);
+        }
+    }
 });
