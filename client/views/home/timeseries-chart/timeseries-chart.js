@@ -81,7 +81,7 @@ TimeSeriesChart = {
 							label: {
 								text: 'Danger Zone',
 								style: {
-									color: '#666'
+									color: '#CCC'
 								}
 							}
 						}
@@ -95,19 +95,6 @@ TimeSeriesChart = {
 					states: {
 						hover: {
 							enabled: false
-						}
-					},
-
-					point: {
-						events: {
-							//mouseOver: function(e){
-							//	if(!Session.get("targetQuakeId") && e.target && e.target.category){
-							//		var quakeId = Helpers.getQuakeByTime(moment.utc(e.target.category).toISOString());
-							//		if(quakeId){
-							//			TimeSeriesChart.setTimeSlider(e.target.clientX);
-							//		}
-							//	}
-							//}
 						}
 					}
 				},

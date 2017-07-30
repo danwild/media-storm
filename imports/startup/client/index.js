@@ -27,4 +27,5 @@ import _ from 'underscore';
 
 // ANY CONFIG
 import '/imports/startup/client/leaflet-config.js';
+import '/imports/startup/client/highcharts-config.js';
 
