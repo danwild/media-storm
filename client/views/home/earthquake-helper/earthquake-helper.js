@@ -5,9 +5,6 @@ EarthquakeHelper = {
 	setTarget: function(id) {
 
 		Helpers.success({ message: "targetQuakeId updated: " + id });
-
-
-
 		Session.set("targetQuakeId", id);
 
 		// TODO
