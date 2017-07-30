@@ -23,20 +23,14 @@ Meteor.methods({
     getTwitter: function (id) {
 
         var quake = Helpers.getQuake(id);
+        if(!quake) return;
+        
+        console.log(quake);
 
+        console.log(quake['UTC Date']);
 
-        console.log(typeof(quake));
-        console.log(quake.Latitude);
-
-
-        // const geolocation = {
-        //     latitude: quake['Latitude'],
-        //     longitude: quake['Longitude'],
-        //     radius: '1000'
-        // };
-
-
-        return TwitterHelper.getData('govhack', '2017-07-30');
+        return TwitterHelper.getData(quake['UTC Date']);
+        //return TwitterHelper.getTest();
     },
 
     /**

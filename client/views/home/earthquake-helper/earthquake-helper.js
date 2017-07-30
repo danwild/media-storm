@@ -14,7 +14,6 @@ var flag = false;
 var quakeID;
 
 async function notifier(data, currentindex = 0) {
-    await sleep(2500);
     while(flag) {
         await sleep(2500);
     }
@@ -22,16 +21,19 @@ async function notifier(data, currentindex = 0) {
     flag = true;
     console.log("Started Loop");
     stop = (quakeID != Session.get("targetQuakeId"));
+
     while(!stop) {
         if (currentindex >= _.size(data)) {
             currentindex = 0;
         }
+
         Helpers.info({ message: '<i class="fa fa-twitter" aria-hidden="true"></i>    <strong>Tweet</strong><BR>' + data[currentindex].text + quakeID, options: { position: 'bottom-right', timeout: '5000'} });
         //notifier(data, quakeID, currentindex+1);
         currentindex++;
         stop = (quakeID != Session.get("targetQuakeId"));
         await sleep(2500);
     }
+
     console.log("Ended loop");
     flag = false;
 }

@@ -65,49 +65,58 @@ TwitterHelper = {
      * This method is an over-loader method to provide the getData() method with any number of parameters for flexibility
      * in which arguments to provide it.
      *
-     * @param text, keywords to search twitter feeds for. I.e. GovHack will yield results where that word is found.
      * @param date, the date parameter is the date we wish to collect up-to and including to allow data to be cherry picked.
      * @param geolocation, object containing lon, lat and radius area in which to search for twitter feeds.
      * @returns {string}, the query string that will be sent to Twitter.
      */
-    getParamaters: function (text, date, geolocation) {
+    getParamaters: function (date, geolocation) {
 
-        let paramaters = 'q=' + text;
 
-        if (typeof longitude !== "undefined") {
-            paramaters += '&geocode=' + geolocation.latitude + "," + geolocation.longitude + "," + geolocation.radius + "km";
+        let parameters = 'q=catsORdogs';
+
+        if (typeof geolocation !== "undefined") {
+            parameters =  parameters + '&geocode=' + geolocation.latitude + "," + geolocation.longitude + "," + geolocation.radius + "km";
         }
         if (typeof date !== "undefined") {
-            paramaters += '&until=' + date;
+            parameters = parameters + '&until=' + date;
         }
 
-        return paramaters;
+
+        console.log(parameters);
+
+        return parameters;
     },
 
     /***
      * This method processes the arguments passed to it and generates and sends a query to Twitter to request results.
      * NOTE: this method is limited to 15 records per query and has an upper limit 450 queries per 15 minutes.
      *
-     * @param text, keywords to search for.
      * @param date, is the date to stop returning results once reached. I.e. give me all x records up-to x date.
      * @param geolocation, lon, lat, radius of where the tweet was made.
      * @returns {Promise}
      */
-    getData: function(text, date, geolocation) {
+    getData: function(date, geolocation) {
         //console.log('Fetching tweets for ' + date + " within " + radius + " kilometres of " + longitude + " : " + latitude);
 
-        const params = this.getParamaters(text, date, geolocation);
+        const params = this.getParamaters(date, geolocation);
 
         // return a promise while we do async stuff
         return new Promise((resolve, reject) => {
 
+             var url = 'https://api.twitter.com/1.1/search/tweets.json?' + params;
+
+            //var url = 'https://api.twitter.com/1.1/search/tweets.json?q=catsORdogs';
+
+            console.log(url);
+
             // make an async call
             this.oauth.get(
-                'https://api.twitter.com/1.1/search/tweets.json?' + params,
+                url,
                 this.accessToken,
                 this.accessTokenSecret,
                 function (e, data, res) {
                     if (e){
+                        console.log("something don fucked up");
                         reject(e);
                         return e;
 
