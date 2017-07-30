@@ -1,3 +1,5 @@
+import moment from  'moment';
+
 Session.set("targetQuakeId", null);
 
 const Ntimeout = 2500;
@@ -26,7 +28,18 @@ async function notifier(data, currentindex = 0) {
         if (currentindex >= _.size(data)) {
             currentindex = 0;
         }
-        Helpers.info({ message: '<i class="fa fa-twitter" aria-hidden="true"></i>    <strong>Tweet</strong><BR>' + data[currentindex].text + quakeID, options: { position: 'bottom-right', timeout: '5000'} });
+
+	    var time = "<p><small> " +moment.utc(data[currentindex].created_at, 'ddd MMM DD HH:mm:ss [+0000] YYYY').format('dddd, MMMM Do YYYY, h:mm:ss a') + "</small></p>";
+
+        Helpers.info({
+	        message: '<i class="fa fa-twitter" aria-hidden="true"></i>    <strong>Tweet</strong>'
+	        + time + '' + data[currentindex].text + quakeID,
+
+	         options: {
+		        position: 'bottom-left',
+		        timeout: '5000'
+	        }
+        });
         //notifier(data, quakeID, currentindex+1);
         currentindex++;
         stop = (quakeID != Session.get("targetQuakeId"));
@@ -47,21 +60,36 @@ EarthquakeHelper = {
 	 */
     setTarget: function(id){
 
-
-        Helpers.success({ message: "targetQuakeId updated: " + id });
-        Session.set("targetQuakeId", id);
-
+	    Session.set("targetQuakeId", id);
+	    Helpers.clearAlert();
 	    EarthquakeMapLayers.animateQuake(id);
+	    this.showQuakeInfo(id);
 
         // query server for twitter data
         // vis tweets on map, show some top tweets as notifications
         Meteor.call('getTwitter', id, function(err, data) {
 
+	        if(err || data.length < 1) return;
+
         	const tweets = JSON.parse(data);
             quakeID = id;
             notifier(tweets.statuses);
+
+	        console.log(tweets);
         });
-    }
+    },
+
+	showQuakeInfo: function(id){
+		var quake = Helpers.getQuake(id);
+		var time = moment.utc(
+			quake['UTC Date'] +' '+ quake['UTC Time'],
+			'YYYY-MM-DD HH:mm:ss'
+		).format('dddd, MMMM Do YYYY, h:mm:ss a');
+
+		Helpers.success({
+			message: "<div class='text-center'><strong>Time: </strong>"+ time +", <strong>Magnitude: </strong>" + quake['Magnitude'] + "</div>"
+		});
+	}
 
 };
 
