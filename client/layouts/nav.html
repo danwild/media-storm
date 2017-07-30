@@ -1,10 +1,18 @@
 <template name="nav">
 	<span class="nav">
-		<a href="{{pathFor 'home'}}" class="button {{#if isRoute 'home' }}active{{else}}{{/if}}">
+		<!--<a href="{{pathFor 'home'}}" class="button {{#if isRoute 'home' }}active{{else}}{{/if}}">-->
+			<!--map <i class="fa fa-map-o" aria-hidden="true"></i>-->
+		<!--</a>-->
+		<a href="#" class="button home-button {{#if isRoute 'home' }}active{{else}}{{/if}}">
 			map <i class="fa fa-map-o" aria-hidden="true"></i>
 		</a>
-		<a href="{{pathFor 'about'}}" class="button {{#if isRoute 'about' }}active{{else}}{{/if}}">
+
+		<a href="#" class="button about-button {{#if isRoute 'about' }}active{{else}}{{/if}}">
 			about <i class="fa fa-info-circle" aria-hidden="true"></i>
 		</a>
+
+		<!--<a href="{{pathFor 'about'}}" class="button {{#if isRoute 'about' }}active{{else}}{{/if}}">-->
+			<!--about <i class="fa fa-info-circle" aria-hidden="true"></i>-->
+		<!--</a>-->
 	</span>
 </template>

@@ -84,7 +84,8 @@ Highcharts.theme = {
 	tooltip: {
 		backgroundColor: 'rgba(0, 0, 0, 0.85)',
 		style: {
-			color: '#F0F0F0'
+			color: '#F0F0F0',
+			fontSize: 16
 		}
 	},
 	plotOptions: {

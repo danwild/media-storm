@@ -1,9 +1,11 @@
 <template name="toolPanel">
 
-	<div class="toolPanel">
+	{{#if isRoute 'home' }}
 
-		{{>timeseriesChart}}
+		<div class="toolPanel">
+			{{>timeseriesChart}}
+		</div>
 
-	</div>
+	{{/if}}
 
 </template>

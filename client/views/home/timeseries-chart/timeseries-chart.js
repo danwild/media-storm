@@ -23,10 +23,10 @@ TimeSeriesChart = {
 
 	init: function(){
 
+		if(this.chart) return;
+
 		var quakesBig = Helpers.quakeBigTimeSeries();
 		var quakesSmall = Helpers.quakeSmallTimeSeries();
-
-		console.log(quakesBig);
 
 		TimeSeriesChart.chart = Highcharts.chart('timeSeriesChart', {
 			chart: {
@@ -34,7 +34,7 @@ TimeSeriesChart = {
 			},
 
 			tooltip: {
-				enabled: false
+				//enabled: false
 			},
 
 			title: {
@@ -61,7 +61,7 @@ TimeSeriesChart = {
 					color: 'red', // Color value
 					dashStyle: 'solid', // Style of the plot line. Default to solid
 					value: 1401840000000, // Value of where the line will appear
-					width: 2 // Width of the line
+					width: 0 // Width of the line
 				}]
 
 
@@ -104,6 +104,8 @@ TimeSeriesChart = {
 					events: {
 
 						click: function(e){
+
+							console.log('click');
 
 							var quakeId = Helpers.getQuakeByTime(moment.utc(e.point.category).toISOString());
 							if(quakeId){
@@ -149,8 +151,8 @@ TimeSeriesChart = {
 						}
 					},
 					tooltip: {
-						//headerFormat: '<b>{series.name}</b><br>',
-						//pointFormat: '{point.x:%d/%m/%Y}, Magnitude: {point.y}'
+						headerFormat: '<b>{series.name}</b><br>',
+						pointFormat: '{point.x:%d/%m/%Y}, Magnitude: {point.y}'
 					}
 				}
 			},
