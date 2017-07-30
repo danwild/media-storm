@@ -60,6 +60,8 @@ EarthquakeHelper = {
 	 */
     setTarget: function(id){
 
+	    console.log('setTarget');
+
 	    Session.set("targetQuakeId", id);
 	    Helpers.clearAlert();
 	    EarthquakeMapLayers.animateQuake(id);

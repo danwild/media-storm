@@ -105,6 +105,8 @@ TimeSeriesChart = {
 
 						click: function(e){
 
+							console.log('click');
+
 							var quakeId = Helpers.getQuakeByTime(moment.utc(e.point.category).toISOString());
 							if(quakeId){
 
