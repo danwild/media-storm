@@ -33,7 +33,7 @@ async function notifier(data, currentindex = 0) {
 
         Helpers.info({
 	        message: '<i class="fa fa-twitter" aria-hidden="true"></i>    <strong>Tweet</strong>'
-	        + time + '' + data[currentindex].text + quakeID,
+	        + time + '' + data[currentindex].text,
 
 	         options: {
 		        position: 'bottom-left',
