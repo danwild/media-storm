@@ -1,6 +1,11 @@
 
 /**
+ * @author Daniel Richardson and Brad Hayes
  * Created by dandaman on 29/7/17.
+ *
+ *
+ * Backend API for searching tweets from Twitter based on certain conditions to find tweets from people within an earthquake
+ * zone. These tweets will be displayed in the applications.
  */
 
 
@@ -9,7 +14,6 @@ const accessToken = "icNZWaoOvwjGIknimKODwwn4j";
 const accessTokenSecret = "ItbA7XFZJO9mNTuRVWGOF1iMbUgw2HAWhQNClv1MLcaNYxGp3c";
 const OAuth = require('oauth').OAuth;
 
-
 /***
  * TwitterHelper provides a useful way to search for posts on twitter feeds using Oauth and application tokens.
  * This method is currently limited to 15 posts per request.
@@ -17,7 +21,6 @@ const OAuth = require('oauth').OAuth;
  * @type {{oauth: *, getTest: TwitterHelper.getTest, getParamaters: TwitterHelper.getParamaters, getData: TwitterHelper.getData}}
  */
 TwitterHelper = {
-
     /***
      * This is the oauth setup object used as part of the request to Twitter.
      */
@@ -45,10 +48,10 @@ TwitterHelper = {
                 'https://api.twitter.com/1.1/search/tweets.json?q=%40govhack',
                 this.accessToken,
                 this.accessTokenSecret,
-                function (e, data, res) {
-                    if (e){
-                        reject(e);
-                        return e;
+                function (error, data, res) {
+                    if (error){
+                        reject(error);
+                        return error;
 
                     } else {
                         resolve(data);
@@ -58,26 +61,21 @@ TwitterHelper = {
         });
     },
 
-
     /**
-     * We can use many different query parameters for getting tweets. This is a type of over-loader method for getData so
-     * that we can provide the getData() method any number of parameters and affords us some flexibility in how we provide
-     * queries from the client to the server.
+     * This method is an over-loader method to provide the getData() method with any number of parameters for flexibility
+     * in which arguments to provide it.
      *
-     * @param text, keywords to search twitter feeds. I.e. GovHack will yield results where that word is found.
+     * @param text, keywords to search twitter feeds for. I.e. GovHack will yield results where that word is found.
      * @param date, the date parameter is the date we wish to collect up-to and including to allow data to be cherry picked.
-     * @param longitude
-     * @param latitude
-     * @param radius
+     * @param geolocation, object containing lon, lat and radius area in which to search for twitter feeds.
      * @returns {string}, the query string that will be sent to Twitter.
      */
-    getParamaters: function (text, date, longitude, latitude, radius) {
+    getParamaters: function (text, date, geolocation) {
 
-        var paramaters = 'q=' + text;
-
+        let paramaters = 'q=' + text;
 
         if (typeof longitude !== "undefined") {
-            paramaters += '&geocode=' + latitude + "," + longitude + "," + radius + "km";
+            paramaters += '&geocode=' + geolocation.latitude + "," + geolocation.longitude + "," + geolocation.radius + "km";
         }
         if (typeof date !== "undefined") {
             paramaters += '&until=' + date;
@@ -86,10 +84,19 @@ TwitterHelper = {
         return paramaters;
     },
 
-    getData: function(text, date, longitude, latitude, radius) {
-        //console.log('Fetching tweats for ' + date + " within " + radius + " kilometres of " + longitude + " : " + latitude);
+    /***
+     * This method processes the arguments passed to it and generates and sends a query to Twitter to request results.
+     * NOTE: this method is limited to 15 records per query and has an upper limit 450 queries per 15 minutes.
+     *
+     * @param text, keywords to search for.
+     * @param date, is the date to stop returning results once reached. I.e. give me all x records up-to x date.
+     * @param geolocation, lon, lat, radius of where the tweet was made.
+     * @returns {Promise}
+     */
+    getData: function(text, date, geolocation) {
+        //console.log('Fetching tweets for ' + date + " within " + radius + " kilometres of " + longitude + " : " + latitude);
 
-        const params = this.getParamaters(text, date, longitude, latitude, radius);
+        const params = this.getParamaters(text, date, geolocation);
 
         // return a promise while we do async stuff
         return new Promise((resolve, reject) => {
