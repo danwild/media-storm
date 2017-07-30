@@ -34,7 +34,7 @@ TimeSeriesChart = {
 			},
 
 			tooltip: {
-				enabled: false
+				//enabled: false
 			},
 
 			title: {
@@ -149,8 +149,8 @@ TimeSeriesChart = {
 						}
 					},
 					tooltip: {
-						//headerFormat: '<b>{series.name}</b><br>',
-						//pointFormat: '{point.x:%d/%m/%Y}, Magnitude: {point.y}'
+						headerFormat: '<b>{series.name}</b><br>',
+						pointFormat: '{point.x:%d/%m/%Y}, Magnitude: {point.y}'
 					}
 				}
 			},
