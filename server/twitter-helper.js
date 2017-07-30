@@ -14,7 +14,6 @@ const accessToken = "icNZWaoOvwjGIknimKODwwn4j";
 const accessTokenSecret = "ItbA7XFZJO9mNTuRVWGOF1iMbUgw2HAWhQNClv1MLcaNYxGp3c";
 const OAuth = require('oauth').OAuth;
 
-
 /***
  * TwitterHelper provides a useful way to search for posts on twitter feeds using Oauth and application tokens.
  * This method is currently limited to 15 posts per request.
@@ -49,10 +48,10 @@ TwitterHelper = {
                 'https://api.twitter.com/1.1/search/tweets.json?q=%40govhack',
                 this.accessToken,
                 this.accessTokenSecret,
-                function (e, data, res) {
-                    if (e){
-                        reject(e);
-                        return e;
+                function (error, data, res) {
+                    if (error){
+                        reject(error);
+                        return error;
 
                     } else {
                         resolve(data);

@@ -10,6 +10,7 @@ Meteor.methods({
      * @returns {*}
      */
     getData: function(id){
+        //console.log(id);
         return MyHelper.getData(id);
     },
 
@@ -27,10 +28,9 @@ Meteor.methods({
             latitude: '',
             longitude: '',
             radius: ''
-
         };
 
-        return TwitterHelper.getData('supercat', '2017-07-30');
+        return TwitterHelper.getData('govhack', '2017-07-30');
     },
 
     /**
