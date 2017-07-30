@@ -51,17 +51,7 @@ EarthquakeHelper = {
         Helpers.success({ message: "targetQuakeId updated: " + id });
         Session.set("targetQuakeId", id);
 
-		/* TODO
-		 // do some vis on the map
-		 EarthquakeMapLayers.animateQuake(id);
-
-		 // Tracker.autorun(function(){
-		 //
-		 // 	var id = Session.get("targetQuakeId");
-		 //
-		 //
-		 */ //});
-
+	    EarthquakeMapLayers.animateQuake(id);
 
         // query server for twitter data
         // vis tweets on map, show some top tweets as notifications
