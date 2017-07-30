@@ -22,15 +22,21 @@ Meteor.methods({
      */
     getTwitter: function (id) {
 
-        console.log("this is an id debug: " + id);
+        var quake = Helpers.getQuake(id);
 
-        const geolocation = {
-            latitude: '',
-            longitude: '',
-            radius: ''
-        };
 
-        return TwitterHelper.getData('govhack', '2017-07-30');
+        console.log(typeof(quake));
+        console.log(quake.Latitude);
+
+
+        // const geolocation = {
+        //     latitude: quake['Latitude'],
+        //     longitude: quake['Longitude'],
+        //     radius: '1000'
+        // };
+
+
+       // return TwitterHelper.getData('earth quake', quake['UTC Date'] );
     },
 
     /**

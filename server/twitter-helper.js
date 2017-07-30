@@ -16,7 +16,7 @@ const OAuth = require('oauth').OAuth;
 
 /***
  * TwitterHelper provides a useful way to search for posts on twitter feeds using Oauth and application tokens.
- * This method is currently limited to 15 posts per request.
+ * This method is currently limited to 15 records and 450 twitter requests per 15 minute window.
  *
  * @type {{oauth: *, getTest: TwitterHelper.getTest, getParamaters: TwitterHelper.getParamaters, getData: TwitterHelper.getData}}
  */

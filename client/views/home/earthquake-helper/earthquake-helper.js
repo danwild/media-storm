@@ -3,6 +3,7 @@ Session.set("targetQuakeId", null);
 EarthquakeHelper = {
 
 	setTarget: function(id) {
+	    console.log("set target call debug :")
 
 		Helpers.success({ message: "targetQuakeId updated: " + id });
 		Session.set("targetQuakeId", id);
