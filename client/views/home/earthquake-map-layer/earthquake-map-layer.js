@@ -23,25 +23,51 @@ EarthquakeMapLayers = {
 			this.onDrawLayer = function (info){
 
 				var targetQuake = this.targetQuake;
-
 				if(!targetQuake) return; // don't draw on init
 
 				var ctx = info.canvas.getContext('2d');
 				ctx.clearRect(0, 0, info.canvas.width, info.canvas.height);
-				ctx.fillStyle = "rgba(223, 83, 83, .8)";
 
-				//for (var i = 0; i < data.length; i++) {
-					var d = targetQuake;
-					if (info.bounds.contains([d['Latitude'], d['Longitude']])) {
-						var dot = info.layer._map.latLngToContainerPoint([d['Latitude'], d['Longitude']]);
+				// don't draw if out of view?
+				if (info.bounds.contains([targetQuake['Latitude'], targetQuake['Longitude']])) {
+
+					var dot = info.layer._map.latLngToContainerPoint([targetQuake['Latitude'], targetQuake['Longitude']]);
+					ctx.arc(dot.x, dot.y, 5, 0, Math.PI * 2);
+					var canvasWidth = info.canvas.width;
+					var canvasHeight = info.canvas.height;
+					var angle = 0;
+
+					var requestAnimationFrame = window.requestAnimationFrame ||
+						window.mozRequestAnimationFrame ||
+						window.webkitRequestAnimationFrame ||
+						window.msRequestAnimationFrame;
+
+					function drawCircle() {
+
+						ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+						// color in the background
+						ctx.fillStyle = "rgba(163, 54, 52, .6)";
+
+						// draw the circle
 						ctx.beginPath();
-						ctx.arc(dot.x, dot.y, 5, 0, Math.PI * 2);
-						ctx.fill();
+						var radius = 15 + 10 * Math.abs(Math.cos(angle));
+						ctx.arc(dot.x, dot.y, radius, 0, Math.PI * 2);
 						ctx.closePath();
+
+						// color in the circle
+						ctx.fillStyle = "rgba(163, 54, 52, .6)";
+						ctx.fill();
+						angle += Math.PI / 64;
+
+						requestAnimationFrame(drawCircle);
 					}
-				//}
+
+					drawCircle();
+				}
 			}
 		};
+
 		earthQuakeLayer.prototype = new L.CanvasLayer(); // -- setup prototype
 		this.quakeAnimationLayer = new earthQuakeLayer();
 		MapHelper.map.addLayer(this.quakeAnimationLayer);
