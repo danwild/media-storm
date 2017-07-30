@@ -60,24 +60,23 @@ TwitterHelper = {
 
 
     /**
-     * We can use many different query parameters for getting tweets. This is a type of over-loader method for getData so
-     * that we can provide the getData() method any number of parameters and affords us some flexibility in how we provide
-     * queries from the client to the server.
+     * This method is an over-loader method to provide the getData() method with any number of parameters for flexibility
+     * in which arguments to provide it.
      *
-     * @param text, keywords to search twitter feeds. I.e. GovHack will yield results where that word is found.
+     * @param text, keywords to search twitter feeds for. I.e. GovHack will yield results where that word is found.
      * @param date, the date parameter is the date we wish to collect up-to and including to allow data to be cherry picked.
      * @param longitude
      * @param latitude
      * @param radius
      * @returns {string}, the query string that will be sent to Twitter.
      */
-    getParamaters: function (text, date, longitude, latitude, radius) {
+    getParamaters: function (text, date, geolocation) {
 
         var paramaters = 'q=' + text;
 
 
         if (typeof longitude !== "undefined") {
-            paramaters += '&geocode=' + latitude + "," + longitude + "," + radius + "km";
+            paramaters += '&geocode=' + geolocation.latitude + "," + geolocation.longitude + "," + geolocation.radius + "km";
         }
         if (typeof date !== "undefined") {
             paramaters += '&until=' + date;

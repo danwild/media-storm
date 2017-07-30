@@ -13,7 +13,16 @@ Meteor.methods({
 		return MyHelper.getData(id);
 	},
 
-	getTwitter: function () {
+	getTwitter: function (id) {
+
+		console.log("this is an id debug: " + id);
+
+        const geolocation = {
+            latitude: '',
+            longitude: '',
+            radius: ''
+
+		};
 
         return TwitterHelper.getData('supercat', '2017-07-30');
     },
